@@ -1,0 +1,29 @@
+
+# Archivos compilados de Java
+**/target/
+
+# Configuración local de IntelliJ
+.idea/
+**/.idea/
+*.iml
+
+# Archivos del sistema operativo
+.DS_Store
+
+# Archivos temporales
+*.log
+
+# Credenciales y configuración privada
+.env
+**/.env
+.env.*
+**/.env.*
+application-local.properties
+**/application-local.properties
+application-local.yml
+**/application-local.yml
+
+# Futuro frontend Angular
+**/node_modules/
+**/dist/
+**/.angular/
