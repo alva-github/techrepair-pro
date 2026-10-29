@@ -38,6 +38,11 @@ public class Reparacion {
         this.estado = estado;
     }
 
+    public void setDispositivo(String dispositivo) {
+        this.dispositivo = dispositivo;
+    }
+
+
 
     public Long getId() {
         return id;

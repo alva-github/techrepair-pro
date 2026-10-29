@@ -31,3 +31,22 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Angular ###
+node_modules/
+.angular/
+dist/
+coverage/
+
+### macOS ###
+.DS_Store
+
+### Configuración privada ###
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secrets.properties
+
+### Logs ###
+*.log

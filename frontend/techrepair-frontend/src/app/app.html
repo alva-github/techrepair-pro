@@ -1,0 +1,23 @@
+<h1>TechRepair Pro</h1>
+
+<h2>Listado de reparaciones</h2>
+
+@if (mensaje()) {
+  <div class="mensaje" [class.error]="tipoMensaje() === 'error'">
+    {{ mensaje() }}
+    <button type="button" (click)="mensaje.set('')" aria-label="Cerrar mensaje">×</button>
+  </div>
+}
+
+<app-reparacion-form (reparacionCreada)="agregarReparacion($event)" />
+
+<app-dashboard [reparaciones]="reparaciones()" />
+
+<app-reparacion-list
+  [reparaciones]="reparaciones()"
+  (estadoCambiado)="alCambiarEstado($event)"
+  (reparacionEliminada)="alEliminar($event)"
+  (reparacionEditada)="alEditar($event)"
+/>
+
+<app-ifixit-search />

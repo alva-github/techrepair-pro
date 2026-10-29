@@ -27,3 +27,27 @@ application-local.yml
 **/node_modules/
 **/dist/
 **/.angular/
+# Java / Spring Boot
+target/
+.idea/
+*.iml
+*.log
+
+# Angular
+node_modules/
+.angular/
+dist/
+coverage/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Datos privados
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secrets.properties

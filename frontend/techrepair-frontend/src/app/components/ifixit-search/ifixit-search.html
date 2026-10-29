@@ -1,0 +1,33 @@
+<section class="ifixit">
+  <h2>Guías de reparación iFixit</h2>
+
+  <form (ngSubmit)="buscar()">
+    <input
+      type="text"
+      name="dispositivo"
+      placeholder="Ej. iPhone 13"
+      [(ngModel)]="dispositivo"
+      required
+    />
+
+    <button type="submit" [disabled]="buscando()">
+      {{ buscando() ? 'Buscando...' : 'Buscar guías' }}
+    </button>
+  </form>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  @if (!buscando() && guias().length > 0) {
+    <div class="resultados">
+      @for (guia of guias(); track guia.id) {
+        <article class="guia">
+          <h3>{{ guia.titulo }}</h3>
+          <p>{{ guia.dispositivo }} · {{ guia.dificultad }}</p>
+          <a [href]="guia.url" target="_blank" rel="noopener noreferrer"> Ver guía </a>
+        </article>
+      }
+    </div>
+  }
+</section>

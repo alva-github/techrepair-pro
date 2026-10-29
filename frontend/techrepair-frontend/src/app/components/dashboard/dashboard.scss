@@ -1,0 +1,47 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e5eaf0;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(25, 45, 59, 0.04);
+
+  .etiqueta {
+    font-size: 14px;
+    font-weight: 600;
+    color: #607181;
+  }
+
+  strong {
+    font-size: 36px;
+    font-weight: 700;
+    color: #192d3b;
+  }
+}
+
+.pendiente {
+  border-top: 3px solid #e8b44b;
+}
+
+.proceso {
+  border-top: 3px solid #4c9de5;
+}
+
+.finalizada {
+  border-top: 3px solid #46a77a;
+}
+
+@media (max-width: 650px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}

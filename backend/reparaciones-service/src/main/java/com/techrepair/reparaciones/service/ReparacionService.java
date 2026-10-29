@@ -2,6 +2,7 @@
 package com.techrepair.reparaciones.service;
 
 import com.techrepair.reparaciones.MqttPublisher;
+import com.techrepair.reparaciones.ReparacionEventoDTO;
 import com.techrepair.reparaciones.model.Reparacion;
 import com.techrepair.reparaciones.repository.ReparacionRepository;
 import org.springframework.stereotype.Service;
@@ -56,11 +57,17 @@ public class ReparacionService {
         // Solo notificamos si el estado ha cambiado.
         if (!java.util.Objects.equals(estadoAnterior, nuevoEstado)) {
 
-            String mensaje = "Reparacion " + id
-                    + ": " + nuevoEstado;
 
-            // Publicamos el evento MQTT.
-            mqttPublisher.publicar(mensaje);
+            ReparacionEventoDTO evento = new ReparacionEventoDTO(
+                    reparacion.getId(),
+                    reparacion.getDispositivo(),
+                    estadoAnterior,
+                    nuevoEstado
+            );
+
+        // Convertimos el evento a JSON y lo publicamos por MQTT.
+            mqttPublisher.publicarEvento(evento);
+
         }
 
         return guardada;
@@ -92,4 +99,18 @@ public class ReparacionService {
 
         return true;
     }
+
+    public Reparacion actualizarDispositivo(Long id, String nuevoDispositivo) {
+
+        Reparacion reparacion = repository.findById(id).orElse(null);
+
+        if (reparacion == null) {
+            return null;
+        }
+
+        reparacion.setDispositivo(nuevoDispositivo);
+
+        return repository.save(reparacion);
+    }
+
 }

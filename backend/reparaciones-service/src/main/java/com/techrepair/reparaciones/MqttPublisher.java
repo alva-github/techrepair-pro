@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.support.MessageBuilder;
 
+import tools.jackson.databind.ObjectMapper;
+
+
 @Configuration
 public class MqttPublisher {
 
@@ -43,5 +46,18 @@ public class MqttPublisher {
 
         System.out.println("📤 Mensaje MQTT enviado: " + mensaje);
     }
+
+
+    public void publicarEvento(ReparacionEventoDTO evento) {
+
+        // Convertimos nuestro objeto Java a texto JSON.
+        ObjectMapper mapper = new ObjectMapper();
+
+        String json = mapper.writeValueAsString(evento);
+
+        // Reutilizamos el método MQTT que ya funciona.
+        publicar(json);
+    }
+
 
 }

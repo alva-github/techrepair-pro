@@ -1,0 +1,59 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Dispositivo</th>
+      <th>Avería</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (reparacion of reparaciones(); track reparacion.id) {
+      <tr>
+        <td>{{ reparacion.id }}</td>
+
+        <td>
+          @if (editandoId === reparacion.id) {
+            <input [(ngModel)]="edicion.dispositivo" />
+          } @else {
+            {{ reparacion.dispositivo }}
+          }
+        </td>
+
+        <td>
+          @if (editandoId === reparacion.id) {
+            <input [(ngModel)]="edicion.averia" />
+          } @else {
+            {{ reparacion.averia }}
+          }
+        </td>
+
+        <td>
+          <select
+            [class]="reparacion.estado"
+            [value]="reparacion.estado"
+            (change)="cambiarEstado(reparacion, $any($event.target).value)"
+          >
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="EN_PROCESO">En proceso</option>
+            <option value="FINALIZADA">Finalizada</option>
+          </select>
+        </td>
+
+        <td>
+          @if (editandoId === reparacion.id) {
+            <button type="button" (click)="guardarEdicion(reparacion)">Guardar</button>
+            <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+          } @else {
+            <button type="button" (click)="editar(reparacion)">Editar</button>
+            <button class="btn-eliminar" type="button" (click)="eliminarReparacion(reparacion)">
+              Eliminar
+            </button>
+          }
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

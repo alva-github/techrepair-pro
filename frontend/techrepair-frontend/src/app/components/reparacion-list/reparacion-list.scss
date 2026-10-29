@@ -1,0 +1,129 @@
+:host {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(25, 45, 59, 0.04);
+  overflow: hidden;
+}
+
+thead {
+  background: #f2f5f7;
+}
+
+th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: #607181;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 18px 20px;
+  font-size: 14px;
+  color: #293c4a;
+  border-top: 1px solid #edf0f3;
+}
+
+tbody tr {
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #f9fbfc;
+  }
+}
+
+// Selector de estado
+select {
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  outline-color: #168b91;
+
+  &.PENDIENTE {
+    background: #fff4dd;
+    color: #996400;
+  }
+
+  &.EN_PROCESO {
+    background: #e6f1ff;
+    color: #2563a6;
+  }
+
+  &.FINALIZADA {
+    background: #e3f5eb;
+    color: #23754b;
+  }
+}
+
+// Campos de edición
+input {
+  width: 100%;
+  min-width: 130px;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border: 1px solid #dce4ea;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 13px;
+  outline-color: #168b91;
+}
+
+// Botones
+button {
+  padding: 8px 14px;
+  margin: 3px;
+  border: 1px solid #bcdde0;
+  border-radius: 7px;
+  background: #edf8f8;
+  color: #137b82;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #d9f0f1;
+  }
+}
+
+// Botón eliminar
+.btn-eliminar {
+  background: transparent;
+  color: #b45353;
+  border: 1px solid #eed6d6;
+
+  &:hover {
+    background: #fff0f0;
+    border-color: #dca5a5;
+  }
+}
+
+// Adaptación a móviles
+@media (max-width: 768px) {
+  table {
+    min-width: 680px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    font-size: 12px;
+  }
+}

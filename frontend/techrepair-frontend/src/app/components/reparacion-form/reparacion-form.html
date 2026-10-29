@@ -1,0 +1,29 @@
+<section class="formulario">
+  <h2>Nueva reparación</h2>
+  @if (errorMensaje()) {
+    <p class="error-formulario" role="alert">
+      {{ errorMensaje() }}
+    </p>
+  }
+  <form (ngSubmit)="crearReparacion()" novalidate>
+    <input
+      type="text"
+      name="dispositivo"
+      placeholder="Dispositivo"
+      [(ngModel)]="nuevaReparacion.dispositivo"
+      required
+    />
+
+    <input
+      type="text"
+      name="averia"
+      placeholder="Descripción de la avería"
+      [(ngModel)]="nuevaReparacion.averia"
+      required
+    />
+
+    <button type="submit" [disabled]="guardando()">
+      {{ guardando() ? 'Guardando...' : 'Añadir reparación' }}
+    </button>
+  </form>
+</section>

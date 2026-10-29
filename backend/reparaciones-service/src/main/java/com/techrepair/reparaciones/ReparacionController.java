@@ -10,6 +10,10 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/reparaciones")
 public class ReparacionController {
@@ -95,6 +99,23 @@ public class ReparacionController {
             return ResponseEntity.notFound().build();// envía notificación a http
         }
     }
+
+
+    @PutMapping("/{id}/dispositivo")
+    public ResponseEntity<Reparacion> actualizarDispositivo(
+            @PathVariable Long id,
+            @RequestBody String nuevoDispositivo) {
+
+        Reparacion reparacion =
+                reparacionService.actualizarDispositivo(id, nuevoDispositivo);
+
+        if (reparacion == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(reparacion);
+    }
+
 
 
 }
